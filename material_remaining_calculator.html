@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>原神素材計算器</title>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    function cal_monster_material(){
+      // Initional
+      need_white_monster_material = 36
+      need_green_monster_material = 96
+      need_blue_monster_material = 129
+      white_monster_material = 0
+      green_monster_material = 0
+      blue_monster_material = 0
+      // Get value
+      char_star = $("#char_star").val()
+      if ($("#white_monster_material").val() !== "")
+        white_monster_material = parseInt($("#white_monster_material").val())
+      if ($("#green_monster_material").val() !== "")
+        green_monster_material = parseInt($("#green_monster_material").val())
+      if ($("#blue_monster_material").val() !== "")
+        blue_monster_material = parseInt($("#blue_monster_material").val())
+      // Calulation
+      need_total_material = need_blue_monster_material*9 + need_green_monster_material*3 + need_white_monster_material
+      total_material = blue_monster_material*9 + green_monster_material*3 + white_monster_material
+      remaining_material = need_total_material - total_material
+      // Setting
+      $("#remaining_monster_material").text(remaining_material)
+    }
+    function cal_specialty_material(){
+      // Initional
+      need_green_specialty_material = 23
+      need_blue_specialty_material = 27
+      need_purple_specialty_material = 41
+      green_specialty_material = 0
+      blue_specialty_material = 0
+      purple_specialty_material = 0
+      // Get value
+      char_star = $("#char_star").val()
+      if ($("#green_specialty_material").val() !== "")
+        green_specialty_material = parseInt($("#green_specialty_material").val())
+      if ($("#blue_specialty_material").val() !== "")
+        blue_specialty_material = parseInt($("#blue_specialty_material").val())
+      if ($("#purple_specialty_material").val() !== "")
+        purple_specialty_material = parseInt($("#purple_specialty_material").val())
+      // Calulation
+      need_total_material = need_purple_specialty_material*9 + need_blue_specialty_material*3 + need_green_specialty_material
+      total_material = purple_specialty_material*9 + blue_specialty_material*3 + green_specialty_material
+      remaining_material = need_total_material - total_material
+      // Setting
+      $("#remaining_specialty_material").text(remaining_material)
+    }
+    function cal_skill_material(){
+      // Initional
+      need_green_skill_material = 9 
+      need_blue_skill_material = 63
+      need_purple_skill_material = 114
+      green_skill_material = 0
+      blue_skill_material = 0
+      purple_skill_material = 0
+      // Get value
+      char_star = $("#char_star").val()
+      if ($("#green_skill_material").val() !== "")
+        green_skill_material = parseInt($("#green_skill_material").val())
+      if ($("#blue_skill_material").val() !== "")
+        blue_skill_material = parseInt($("#blue_skill_material").val())
+      if ($("#purple_skill_material").val() !== "")
+        purple_skill_material = parseInt($("#purple_skill_material").val())
+      // Calulation
+      need_total_material = need_purple_skill_material*9 + need_blue_skill_material*3 + need_green_skill_material
+      total_material = purple_skill_material*9 + blue_skill_material*3 + green_skill_material
+      remaining_material = need_total_material - total_material
+      avg_drop = 2.2 + 1.97*3 + 0.24*9
+      remaining_battle_num = Math.ceil(remaining_material / avg_drop)
+      // Setting
+      $("#remaining_skill_material").text(remaining_material)
+      $("#remaining_skill_num").text(remaining_battle_num)
+    }
+    function cal_monster_material_wapen(){
+      // Initional
+      need_white_monster_material = 36
+      need_green_monster_material = 96
+      need_blue_monster_material = 129
+      white_monster_material = 0
+      green_monster_material = 0
+      blue_monster_material = 0
+      // Get value
+      char_star = $("#char_star").val()
+      if ($("#white_monster_material_wapen").val() !== "")
+        white_monster_material = parseInt($("#white_monster_material_wapen").val())
+      if ($("#green_monster_material_wapen").val() !== "")
+        green_monster_material = parseInt($("#green_monster_material_wapen").val())
+      if ($("#blue_monster_material_wapen").val() !== "")
+        blue_monster_material = parseInt($("#blue_monster_material_wapen").val())
+      // Calulation
+      need_total_material = need_blue_monster_material*9 + need_green_monster_material*3 + need_white_monster_material
+      total_material = blue_monster_material*9 + green_monster_material*3 + white_monster_material
+      remaining_material = need_total_material - total_material
+      // Setting
+      $("#remaining_monster_material").text(remaining_material)
+    }
+    function cal_monster2_material_wapen(){
+      // Initional
+      need_green_monster_material = 96
+      need_blue_monster_material = 129
+      need_purple_monster_material = 36
+      green_monster_material = 0
+      blue_monster_material = 0
+      purple_monster_material = 0
+      // Get value
+      char_star = $("#char_star").val()
+      if ($("#green_monster2_material_wapen").val() !== "")
+        green_monster_material = parseInt($("#green_monster2_material_wapen").val())
+      if ($("#blue_monster2_material_wapen").val() !== "")
+        blue_monster_material = parseInt($("#blue_monster2_material_wapen").val())
+      if ($("#purple_monster2_material_wapen").val() !== "")
+      purple_monster_material = parseInt($("#purple_monster2_material_wapen").val())
+      // Calulation
+      need_total_material = need_purple_monster_material*9 + need_blue_monster_material*3 + need_green_monster_material
+      total_material = purple_monster_material*9 + blue_monster_material*3 + green_monster_material
+      remaining_material = need_total_material - total_material
+      // Setting
+      $("#remaining_monster_material").text(remaining_material)
+    }
+    function cal_skill_material(){
+      // Initional
+      need_green_skill_material = 9 
+      need_blue_skill_material = 63
+      need_purple_skill_material = 114
+      green_skill_material = 0
+      blue_skill_material = 0
+      purple_skill_material = 0
+      // Get value
+      char_star = $("#char_star").val()
+      if ($("#green_skill_material").val() !== "")
+        green_skill_material = parseInt($("#green_skill_material").val())
+      if ($("#blue_skill_material").val() !== "")
+        blue_skill_material = parseInt($("#blue_skill_material").val())
+      if ($("#purple_skill_material").val() !== "")
+        purple_skill_material = parseInt($("#purple_skill_material").val())
+      // Calulation
+      need_total_material = need_purple_skill_material*9 + need_blue_skill_material*3 + need_green_skill_material
+      total_material = purple_skill_material*9 + blue_skill_material*3 + green_skill_material
+      remaining_material = need_total_material - total_material
+      avg_drop = 2.2 + 1.97*3 + 0.24*9
+      remaining_battle_num = Math.ceil(remaining_material / avg_drop)
+      // Setting
+      $("#remaining_skill_material").text(remaining_material)
+      $("#remaining_skill_num").text(remaining_battle_num)
+    }
+  </script>
+</head>
+<body>
+<div style="background-color:black;width:130px;height:75px;position:absolute;left:47%;top:15%;z-index:1;display:none;" id="ycdt" onmouseout="(function(){$('#ycdt').css('display','none');})()"><img src="pictrue\\you_cannot_do_this.jpeg" width="130"></div>
+<div class="form-row"> 
+	<div class="col-md-12" style="height: 60px" id="Headerbar">
+		<div class="form-row"> 
+			<div class="col-md-3">
+				<font color="blue" size="5" face="monospace" style="white-space:nowrap">ก็ʕ•͡ᴥ•ʔ ก้</font>
+			</div>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-2">
+				<font color="blue" size="6" face="monospace" style="white-space:nowrap"><b>原神素材計算器</b></font>
+			</div>
+			<div class="col-md-4">
+			</div>
+			<div class="col-md-1">
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<ul class="nav nav-tabs" style="padding: 5px" id="tabs">
+	    <li class="active"><a data-toggle="tab" href="#material">素材計算</a></li>
+      <li><a data-toggle="tab" href="#map">地圖</a></li>
+	    <li><a data-toggle="tab" href="#other1">other1</a></li>
+	    <li><a data-toggle="tab" href="#other2">other2</a></li>
+	    <li><a data-toggle="tab" href="#other3">other3</a></li>
+	    <li><a data-toggle="tab" href="#other4">other4</a></li>
+	</ul>
+	<div class="tab-content">
+	    <div id="material" class="tab-pane fade in active">
+	    	<div class="form-row"> 
+	    		<div class="col-md-2"></div>
+				<div class="col-md-7">
+					<div id="Charactor_material">
+						<div class="form-row" style="overflow: hidden;" >
+							<div class="col-md-3">
+								<font size="1" color="Gray">&nbsp;角色星數: </font>
+								<select size="1" id="char_star" class="form-control">
+								<option value="five">5✩</option>
+								<option value="four">4✩</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-row" name="怪物素材" style="margin-top: 20px">
+              <div class="col-md-2" style="margin-top: 20px;">
+                已擁有怪物素材
+              </div>
+							<div class="col-md-5">
+								<div id="input_material">
+                  <div class="col-md-4">
+										<font size="1" color="#73A1FB">藍色</font>
+										<input id="blue_monster_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="#5CE599">綠色</font>
+										<input id="green_monster_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="Silver">白色</font>
+										<input id="white_monster_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+								</div>
+							</div>
+              <div class="col-md-1" style="margin-top: 15px">
+                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster_material" class="btn" onclick="cal_monster_material();">➜</button>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  缺少:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="Silver">白色素材</font>
+                  <span id="remaining_monster_material" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  大約:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="Silver">怪物數量</font>
+                  <span id="remaining_monster_num" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+						</div>
+            <div class="form-row" name="特產素材" style="margin-top: 20px">
+              <div class="col-md-2" style="margin-top: 20px;">
+                已擁有特產素材
+              </div>
+							<div class="col-md-5">
+								<div id="input_material">
+                  <div class="col-md-4">
+										<font size="1" color="#865CED">紫色</font>
+										<input id="purple_specialty_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="#73A1FB">藍色</font>
+										<input id="blue_specialty_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="#5CE599">綠色</font>
+										<input id="green_specialty_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+								</div>
+							</div>
+              <div class="col-md-1" style="margin-top: 15px">
+                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster_material" class="btn" onclick="cal_specialty_material();">➜</button>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  缺少:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="#5CE599">綠色素材</font>
+                  <span id="remaining_specialty_material" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  大約:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="Silver">天</font>
+                  <span id="remaining_specialty_day" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+						</div>
+            <div class="form-row" name="天賦書" style="margin-top: 20px">
+              <div class="col-md-2" style="margin-top: 20px;">
+                已擁有天賦書
+              </div>
+							<div class="col-md-5">
+								<div id="input_material">
+                  <div class="col-md-4">
+										<font size="1" color="#865CED">紫色</font>
+										<input id="purple_skill_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="#73A1FB">藍色</font>
+										<input id="blue_skill_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="#5CE599">綠色</font>
+										<input id="green_skill_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+								</div>
+							</div>
+              <div class="col-md-1" style="margin-top: 15px">
+                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster_material" class="btn" onclick="cal_skill_material();">➜</button>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  缺少:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="#5CE599">綠色素材</font>
+                  <span id="remaining_skill_material" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  大約:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="Silver">副本場數</font>
+                  <span id="remaining_skill_num" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+						</div>
+					</div>
+          <div id="Wapen_material" style="margin-top: 200px">
+						<div class="form-row" style="overflow: hidden;" >
+							<div class="col-md-3">
+								<font size="1" color="Gray">&nbsp;武器星數: </font>
+								<select size="1" id="wapen_star" class="form-control">
+								<option value="five">5✩</option>
+								<option value="four">4✩</option>
+                <option value="four">3✩</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-row" name="怪物素材1" style="margin-top: 20px">
+              <div class="col-md-2" style="margin-top: 20px;">
+                已擁有怪物素材1
+              </div>
+							<div class="col-md-5">
+								<div id="input_material_wapen">
+                  <div class="col-md-4">
+										<font size="1" color="#73A1FB">藍色</font>
+										<input id="blue_monster_material_wapen" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="#5CE599">綠色</font>
+										<input id="green_monster_material_wapen" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="Silver">白色</font>
+										<input id="white_monster_material_wapen" type="text" class="form-control" style="height: 80%;">
+									</div>
+								</div>
+							</div>
+              <div class="col-md-1" style="margin-top: 15px">
+                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster_material_wapen" class="btn" onclick="cal_monster_material();">➜</button>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  缺少:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="Silver">白色素材</font>
+                  <span id="remaining_monster_material_wapen" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  大約:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="Silver">怪物數量</font>
+                  <span id="remaining_monster_num_wapen" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+						</div>
+            <div class="form-row" name="怪物素材2" style="margin-top: 20px">
+              <div class="col-md-2" style="margin-top: 20px;">
+                已擁有怪物素材2
+              </div>
+							<div class="col-md-5">
+								<div id="input_material">
+                  <div class="col-md-4">
+										<font size="1" color="#865CED">紫色</font>
+										<input id="purple_monster2_material_wapen" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="#73A1FB">藍色</font>
+										<input id="blue_monster2_material_wapen" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-4">
+										<font size="1" color="#5CE599">綠色</font>
+										<input id="green_monster2_material_wapen" type="text" class="form-control" style="height: 80%;">
+									</div>
+								</div>
+							</div>
+              <div class="col-md-1" style="margin-top: 15px">
+                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster2_material_wapen" class="btn" onclick="cal_monster2_material();">➜</button>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  缺少:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="#5CE599">綠色素材</font>
+                  <span id="remaining_monster2_material_wapen" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  大約:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="Silver">怪物數量</font>
+                  <span id="remaining_monster2_day_wapen" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+						</div>
+            <div class="form-row" name="武器素材" style="margin-top: 20px">
+              <div class="col-md-2" style="margin-top: 20px;">
+                已擁有武器素材
+              </div>
+							<div class="col-md-5">
+								<div id="input_material">
+                  <div class="col-md-3">
+										<font size="1" color="#F8DA53">金色</font>
+										<input id="purple_wapen_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+                  <div class="col-md-3">
+										<font size="1" color="#865CED">紫色</font>
+										<input id="purple_wapen_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-3">
+										<font size="1" color="#73A1FB">藍色</font>
+										<input id="blue_wapen_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+									<div class="col-md-3">
+										<font size="1" color="#5CE599">綠色</font>
+										<input id="green_wapen_material" type="text" class="form-control" style="height: 80%;">
+									</div>
+								</div>
+							</div>
+              <div class="col-md-1" style="margin-top: 15px">
+                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_wapen_material" class="btn" onclick="cal_wapen_material();">➜</button>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  缺少:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="#5CE599">綠色素材</font>
+                  <span id="remaining_wapen_material" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="col-md-5" style="margin-top: 20px;">
+                  大約:
+                </div>
+                <div class="col-md-7">
+                  <font size="1" color="Silver">副本場數</font>
+                  <span id="remaining_wapen_num" class="form-control" style="height: 30px;"></span>
+                </div>
+              </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-2" >
+					<div id="Data_setting_comment">
+						所需素材量
+					</div>
+					<div style="height: calc(100vh - 185px);border-left-style:solid;border-left-color:WhiteSmoke;">
+					</div>
+				</div>
+			</div>
+	    </div>
+	    <div id="map" class="tab-pane fade">
+	      <div class="form-row"> 
+	      	<div class="col-md-10">
+				<div class="form-row">
+					<div id="Box3" class="col-md-2">
+						<div>
+							<font size="2">&nbsp;選取素材: </font>
+							<select size="1" id="sampleNN" class="form-control" style="box-shadow:0px 2px 1px 0px #cccccc;" onchange="generateSample_NNmodule()">
+								<option value="monster">怪物</option>
+								<option value="specialty">特產</option>
+							</select>
+						</div>
+						<br><br>
+					</div>
+					<div id="Box1" ondrop="Drop(event)" ondragover="AllowDrop(event)" class="col-md-10"></div>
+				</div>
+		  	</div>
+	      </div>
+	    </div>
+	    <div id="other1" class="tab-pane fade">
+	      <div class="col-md-4">tbd</div>
+	    </div>
+	    <div id="other2" class="tab-pane fade">
+        <div class="col-md-4">tbd</div>
+	    </div>
+	    <div id="other3" class="tab-pane fade">
+	  		<div class="col-md-4">tbd</div>
+	    </div>
+	    <div id="other4" class="tab-pane fade">
+	    	<div class="col-md-4">tbd</div>
+	    </div>
+	</div>
+</div>
+</div>
+</body>
+</html>
+
