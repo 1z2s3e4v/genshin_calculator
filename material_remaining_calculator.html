@@ -29,9 +29,9 @@
       // Calulation
       need_total_material = need_blue_monster_material*9 + need_green_monster_material*3 + need_white_monster_material
       total_material = blue_monster_material*9 + green_monster_material*3 + white_monster_material
-      remaining_material = need_total_material - total_material
+      lacking_material = need_total_material - total_material
       // Setting
-      $("#remaining_monster_material").text(remaining_material)
+      $("#lacking_monster_material").text(lacking_material)
     }
     function cal_specialty_material(){
       // Initional
@@ -52,9 +52,9 @@
       // Calulation
       need_total_material = need_purple_specialty_material*9 + need_blue_specialty_material*3 + need_green_specialty_material
       total_material = purple_specialty_material*9 + blue_specialty_material*3 + green_specialty_material
-      remaining_material = need_total_material - total_material
+      lacking_material = need_total_material - total_material
       // Setting
-      $("#remaining_specialty_material").text(remaining_material)
+      $("#lacking_specialty_material").text(lacking_material)
     }
     function cal_skill_material(){
       // Initional
@@ -75,18 +75,21 @@
       // Calulation
       need_total_material = need_purple_skill_material*9 + need_blue_skill_material*3 + need_green_skill_material
       total_material = purple_skill_material*9 + blue_skill_material*3 + green_skill_material
-      remaining_material = need_total_material - total_material
+      lacking_material = need_total_material - total_material
       avg_drop = 2.2 + 1.97*3 + 0.24*9
-      remaining_battle_num = Math.ceil(remaining_material / avg_drop)
+      lacking_battle_num = Math.ceil(lacking_material / avg_drop)
       // Setting
-      $("#remaining_skill_material").text(remaining_material)
-      $("#remaining_skill_num").text(remaining_battle_num)
+      $("#lacking_skill_material").text(lacking_material)
+      if(lacking_battle_num <= 0)
+        $("#lacking_skill_num").text("--")
+      else
+        $("#lacking_skill_num").text(lacking_battle_num)
     }
     function cal_monster_material_wapen(){
       // Initional
-      need_white_monster_material = 36
-      need_green_monster_material = 96
-      need_blue_monster_material = 129
+      need_white_monster_material = 15
+      need_green_monster_material = 23
+      need_blue_monster_material = 27
       white_monster_material = 0
       green_monster_material = 0
       blue_monster_material = 0
@@ -98,18 +101,22 @@
         green_monster_material = parseInt($("#green_monster_material_wapen").val())
       if ($("#blue_monster_material_wapen").val() !== "")
         blue_monster_material = parseInt($("#blue_monster_material_wapen").val())
+      
       // Calulation
       need_total_material = need_blue_monster_material*9 + need_green_monster_material*3 + need_white_monster_material
       total_material = blue_monster_material*9 + green_monster_material*3 + white_monster_material
-      remaining_material = need_total_material - total_material
+      if ($("#lacking_monster_material").text() !== "" && $("#check_same_material").is(":checked")){
+        total_material = (-1)*parseInt($("#lacking_monster_material").text())
+      }
+      lacking_material = need_total_material - total_material
       // Setting
-      $("#remaining_monster_material").text(remaining_material)
+      $("#lacking_monster_material_wapen").text(lacking_material)
     }
     function cal_monster2_material_wapen(){
       // Initional
-      need_green_monster_material = 96
-      need_blue_monster_material = 129
-      need_purple_monster_material = 36
+      need_green_monster_material = 23
+      need_blue_monster_material = 27
+      need_purple_monster_material = 41
       green_monster_material = 0
       blue_monster_material = 0
       purple_monster_material = 0
@@ -124,40 +131,46 @@
       // Calulation
       need_total_material = need_purple_monster_material*9 + need_blue_monster_material*3 + need_green_monster_material
       total_material = purple_monster_material*9 + blue_monster_material*3 + green_monster_material
-      remaining_material = need_total_material - total_material
+      lacking_material = need_total_material - total_material
       // Setting
-      $("#remaining_monster_material").text(remaining_material)
+      $("#lacking_monster2_material_wapen").text(lacking_material)
     }
-    function cal_skill_material(){
+    function cal_wapen_material(){
       // Initional
-      need_green_skill_material = 9 
-      need_blue_skill_material = 63
-      need_purple_skill_material = 114
-      green_skill_material = 0
-      blue_skill_material = 0
-      purple_skill_material = 0
+      need_green_wapen_material = 5
+      need_blue_wapen_material = 14
+      need_purple_wapen_material = 14
+      need_golden_wapen_material = 6
+      green_wapen_material = 0
+      blue_wapen_material = 0
+      purple_wapen_material = 0
+      golden_wapen_material = 0
       // Get value
-      char_star = $("#char_star").val()
-      if ($("#green_skill_material").val() !== "")
-        green_skill_material = parseInt($("#green_skill_material").val())
-      if ($("#blue_skill_material").val() !== "")
-        blue_skill_material = parseInt($("#blue_skill_material").val())
-      if ($("#purple_skill_material").val() !== "")
-        purple_skill_material = parseInt($("#purple_skill_material").val())
+      wapen_star = $("#wapen_star").val()
+      if ($("#green_wapen_material").val() !== "")
+        green_wapen_material = parseInt($("#green_wapen_material").val())
+      if ($("#blue_wapen_material").val() !== "")
+        blue_wapen_material = parseInt($("#blue_wapen_material").val())
+      if ($("#purple_wapen_material").val() !== "")
+        purple_wapen_material = parseInt($("#purple_wapen_material").val())
+      if ($("#golden_wapen_material").val() !== "")
+        golden_wapen_material = parseInt($("#golden_wapen_material").val())
       // Calulation
-      need_total_material = need_purple_skill_material*9 + need_blue_skill_material*3 + need_green_skill_material
-      total_material = purple_skill_material*9 + blue_skill_material*3 + green_skill_material
-      remaining_material = need_total_material - total_material
-      avg_drop = 2.2 + 1.97*3 + 0.24*9
-      remaining_battle_num = Math.ceil(remaining_material / avg_drop)
+      need_total_material = need_golden_wapen_material*27 + need_purple_wapen_material*9 + need_blue_wapen_material*3 + need_green_wapen_material
+      total_material = golden_wapen_material*27 + purple_wapen_material*9 + blue_wapen_material*3 + green_wapen_material
+      lacking_material = need_total_material - total_material
+      avg_drop = 2.21 + 2.40*3 + 0.64*9 + 0.07*27
+      lacking_battle_num = Math.ceil(lacking_material / avg_drop)
       // Setting
-      $("#remaining_skill_material").text(remaining_material)
-      $("#remaining_skill_num").text(remaining_battle_num)
+      $("#lacking_wapen_material").text(lacking_material)
+      if(lacking_battle_num <= 0)
+        $("#lacking_wapen_num").text("--")
+      else
+        $("#lacking_wapen_num").text(lacking_battle_num)
     }
   </script>
 </head>
 <body>
-<div style="background-color:black;width:130px;height:75px;position:absolute;left:47%;top:15%;z-index:1;display:none;" id="ycdt" onmouseout="(function(){$('#ycdt').css('display','none');})()"><img src="pictrue\\you_cannot_do_this.jpeg" width="130"></div>
 <div class="form-row"> 
 	<div class="col-md-12" style="height: 60px" id="Headerbar">
 		<div class="form-row"> 
@@ -229,7 +242,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="Silver">白色素材</font>
-                  <span id="remaining_monster_material" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_monster_material" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
               <div class="col-md-2">
@@ -238,7 +251,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="Silver">怪物數量</font>
-                  <span id="remaining_monster_num" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_monster_num" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
 						</div>
@@ -271,7 +284,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="#5CE599">綠色素材</font>
-                  <span id="remaining_specialty_material" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_specialty_material" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
               <div class="col-md-2">
@@ -280,7 +293,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="Silver">天</font>
-                  <span id="remaining_specialty_day" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_specialty_day" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
 						</div>
@@ -313,7 +326,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="#5CE599">綠色素材</font>
-                  <span id="remaining_skill_material" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_skill_material" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
               <div class="col-md-2">
@@ -322,7 +335,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="Silver">副本場數</font>
-                  <span id="remaining_skill_num" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_skill_num" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
 						</div>
@@ -359,7 +372,7 @@
 								</div>
 							</div>
               <div class="col-md-1" style="margin-top: 15px">
-                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster_material_wapen" class="btn" onclick="cal_monster_material();">➜</button>
+                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster_material_wapen" class="btn" onclick="cal_monster_material_wapen();">➜</button>
               </div>
               <div class="col-md-2">
                 <div class="col-md-5" style="margin-top: 20px;">
@@ -367,7 +380,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="Silver">白色素材</font>
-                  <span id="remaining_monster_material_wapen" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_monster_material_wapen" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
               <div class="col-md-2">
@@ -376,11 +389,20 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="Silver">怪物數量</font>
-                  <span id="remaining_monster_num_wapen" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_monster_num_wapen" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
 						</div>
-            <div class="form-row" name="怪物素材2" style="margin-top: 20px">
+            <div class="form-row" name="怪物素材1_check">
+              <div class="col-md-12">
+                <label class="switch" style="margin-top: -15px">
+                  <input id="check_same_material" type="checkbox" checked>
+                  <span class="slider round"></span>
+                  <font size="2" color="Gray" style="margin-left: 10px">與角色相同</font>
+                </label>
+              </div>
+            </div>
+            <div class="form-row" name="怪物素材2" style="margin-top: 10px">
               <div class="col-md-2" style="margin-top: 20px;">
                 已擁有怪物素材2
               </div>
@@ -401,7 +423,7 @@
 								</div>
 							</div>
               <div class="col-md-1" style="margin-top: 15px">
-                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster2_material_wapen" class="btn" onclick="cal_monster2_material();">➜</button>
+                <button type="button" style="box-shadow:5px 6px 5px 0px #cccccc;background-color: #00D1B6;" id="btn_cal_monster2_material_wapen" class="btn" onclick="cal_monster2_material_wapen();">➜</button>
               </div>
               <div class="col-md-2">
                 <div class="col-md-5" style="margin-top: 20px;">
@@ -409,7 +431,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="#5CE599">綠色素材</font>
-                  <span id="remaining_monster2_material_wapen" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_monster2_material_wapen" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
               <div class="col-md-2">
@@ -418,7 +440,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="Silver">怪物數量</font>
-                  <span id="remaining_monster2_day_wapen" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_monster2_day_wapen" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
 						</div>
@@ -430,7 +452,7 @@
 								<div id="input_material">
                   <div class="col-md-3">
 										<font size="1" color="#F8DA53">金色</font>
-										<input id="purple_wapen_material" type="text" class="form-control" style="height: 80%;">
+										<input id="golden_wapen_material" type="text" class="form-control" style="height: 80%;">
 									</div>
                   <div class="col-md-3">
 										<font size="1" color="#865CED">紫色</font>
@@ -455,7 +477,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="#5CE599">綠色素材</font>
-                  <span id="remaining_wapen_material" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_wapen_material" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
               <div class="col-md-2">
@@ -464,7 +486,7 @@
                 </div>
                 <div class="col-md-7">
                   <font size="1" color="Silver">副本場數</font>
-                  <span id="remaining_wapen_num" class="form-control" style="height: 30px;"></span>
+                  <span id="lacking_wapen_num" class="form-control" style="height: 30px;"></span>
                 </div>
               </div>
 						</div>
